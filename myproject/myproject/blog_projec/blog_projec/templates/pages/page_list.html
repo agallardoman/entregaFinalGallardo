@@ -1,0 +1,15 @@
+<!-- templates/pages/page_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Blog</h1>
+    {% if pages %}
+        <ul>
+        {% for page in pages %}
+            <li><a href="{% url 'pages:detail' page.pk %}">{{ page.title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay páginas aún.</p>
+    {% endif %}
+{% endblock %}
