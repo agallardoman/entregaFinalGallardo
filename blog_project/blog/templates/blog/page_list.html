@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Blogs</h1>
+    {% if pages %}
+        <ul>
+            {% for page in pages %}
+                <li>
+                    <h2>{{ page.title }}</h2>  <!-- Título del blog -->
+                    <p>{{ page.description|slice:":100" }}...</p>  <!-- Resumen del blog (los primeros 100 caracteres) -->
+                    <a href="{% url 'page_detail' pk=page.pk %}">Leer más</a>  <!-- Enlace a la página de detalles -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay blogs publicados aún.</p>
+    {% endif %}
+{% endblock %}
